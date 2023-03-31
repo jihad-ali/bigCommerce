@@ -1,0 +1,55 @@
+<nav class="navUser">
+  {{#or customer (unless settings.hide_price_from_guests)}} {{>
+  components/common/currency-selector}} {{/or}}
+
+  <ul class="navUser-section navUser-section--alt">
+    {{#if theme_settings.social_icon_placement_top}}
+    <li class="navUser-item navUser-item--social">
+      {{> components/common/social-links}}
+    </li>
+    <li class="navUser-item navUser-item--divider">|</li>
+    {{/if}}
+    <li class="navUser-item">
+      <button
+        class="navUser-action navUser-action--quickSearch"
+        type="button"
+        id="quick-search-expand"
+        data-search="quickSearch"
+        aria-controls="quickSearch"
+      >
+        <img class="navIcons" src="../../../assets/icons/search-left.svg" />
+      </button>
+    </li>
+
+    <li class="navUser-item navUser-item--account">
+      <a
+        class="navUser-action"
+        href="{{urls.auth.login}}"
+        aria-label="{{lang 'common.login'}}"
+      >
+        <img class="navIcons" src="../../../assets/icons/user.svg" />
+      </a>
+    </li>
+    <li class="navUser-item navUser-item--cart">
+      <a
+        class="navUser-action"
+        data-cart-preview
+        data-dropdown="cart-preview-dropdown"
+        data-options="align:right"
+        href="{{urls.cart}}"
+        aria-label="{{lang 'cart.nav_aria_label'}}"
+      >
+        <span class="navUser-item-cartLabel">
+          <img class="navIcons" src="../../../assets/icons/bag-minus.svg" />
+        </span>
+        <span class="countPill cart-quantity"></span>
+      </a>
+      <div
+        class="dropdown-menu"
+        id="cart-preview-dropdown"
+        data-dropdown-content
+        aria-hidden="true"
+      ></div>
+    </li>
+  </ul>
+</nav>
