@@ -4,7 +4,7 @@
         "mobileFirst": true,
         "slidesToShow": 1,
         "slidesToScroll": 1,
-        "autoplay": true,
+        "autoplay": false,
         "autoplaySpeed": {{carousel.swap_frequency}},
         "slide": "[data-hero-slide]"
     }'
@@ -28,28 +28,8 @@
                     fallback_size='1280w'
                     lazyload='disabled'
                 }}
-            {{else}}
-                {{> components/common/responsive-img
-                    image=stencil_image
-                    class="heroCarousel-image"
-                    fallback_size='1280w'
-                    lazyload='lazyload'
-                }}
             {{/if}}
-            {{#if button_text}}
-            </a>
-            {{else}}
-            </div>
-            {{/if}}
-            {{#or heading text button_text}}
-                {{> components/carousel-content}}
-            {{/or}}
-        </div>
-    {{#if button_text}}
-    </div>
-    {{else}}
-    </a>
-    {{/if}}
+            
     {{/each}}
     {{#if carousel.slides.length '>' 1}}
         {{> components/carousel-content-announcement}}
